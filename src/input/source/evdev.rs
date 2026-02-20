@@ -14,7 +14,7 @@ use crate::{
         self,
         capability_map::{load_capability_mappings, CapabilityMapConfig},
     },
-    constants::BUS_SOURCES_PREFIX,
+    dbus,
     input::{
         capability::Capability, composite_device::client::CompositeDeviceClient,
         info::DeviceInfoRef, output_capability::OutputCapability,
@@ -198,7 +198,7 @@ impl EventDevice {
 
 /// Returns the DBus object path for evdev devices
 pub fn get_dbus_path(handler: String) -> String {
-    format!("{}/{}", BUS_SOURCES_PREFIX, handler.clone())
+    dbus::create_source_device_path(&handler)
 }
 
 /// Returns the evdev capabilities of the input device at the given path (e.g. /dev/input/event0)

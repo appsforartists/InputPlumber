@@ -7,7 +7,7 @@ use glob_match::glob_match;
 
 use crate::{
     config,
-    constants::BUS_SOURCES_PREFIX,
+    dbus,
     input::{
         capability::Capability, composite_device::client::CompositeDeviceClient,
         info::DeviceInfoRef, output_capability::OutputCapability,
@@ -134,6 +134,5 @@ impl IioDevice {
 
 /// Returns the DBus path for an [IIODevice] from a device id (E.g. iio:device0)
 pub fn get_dbus_path(id: String) -> String {
-    let name = id.replace(':', "_");
-    format!("{}/{}", BUS_SOURCES_PREFIX, name)
+    dbus::create_source_device_path(&id)
 }

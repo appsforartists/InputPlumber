@@ -1417,7 +1417,7 @@ impl Manager {
         let dev_name = device.name();
         let sys_name = device.sysname();
         log::debug!("Device removed: {dev_name} ({sys_name})");
-        let path = ObjectPath::from_string_unchecked(format!("{BUS_SOURCES_PREFIX}/{sys_name}"));
+        let path = crate::dbus::create_source_device_path(&sys_name);
         log::debug!("Device dbus path: {path}");
 
         let id = device.get_id();

@@ -2,8 +2,7 @@ pub mod multicolor;
 use self::multicolor::LedMultiColor;
 use super::{InputError, OutputError, SourceDeviceCompatible, SourceDriver};
 use crate::{
-    config,
-    constants::BUS_SOURCES_PREFIX,
+    config, dbus,
     input::{
         capability::Capability,
         composite_device::client::CompositeDeviceClient,
@@ -99,6 +98,5 @@ impl LedDevice {
 }
 /// Returns the DBus path for an [LedDevice] from a device id (E.g. leds://input7__numlock)
 pub fn get_dbus_path(id: String) -> String {
-    let name = id.replace(':', "_").replace("-", "_");
-    format!("{}/{}", BUS_SOURCES_PREFIX, name)
+    dbus::create_source_device_path(&id)
 }

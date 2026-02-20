@@ -32,7 +32,7 @@ use zotac_zone::ZotacZone;
 
 use crate::{
     config,
-    constants::BUS_SOURCES_PREFIX,
+    dbus,
     drivers,
     input::{
         capability::Capability, composite_device::client::CompositeDeviceClient,
@@ -601,5 +601,5 @@ impl HidRawDevice {
 
 /// Returns the DBus path for a [HIDRawDevice] from a device path (E.g. /dev/hidraw0)
 pub fn get_dbus_path(device_name: String) -> String {
-    format!("{BUS_SOURCES_PREFIX}/{device_name}")
+    dbus::create_source_device_path(&device_name)
 }

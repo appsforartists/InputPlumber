@@ -6,7 +6,7 @@ pub mod oxp_x1_serial;
 use super::{InputError, OutputError, SourceDeviceCompatible, SourceDriver};
 use crate::{
     config,
-    constants::BUS_SOURCES_PREFIX,
+    dbus,
     drivers::oxp_tty::{self, OxpDriverType},
     input::{
         capability::Capability,
@@ -179,6 +179,5 @@ impl TtyDevice {
 
 /// Returns the DBus path for an [TtyDevice] from a device id (E.g. tty://ttyS0)
 pub fn get_dbus_path(id: String) -> String {
-    let name = id.replace(':', "_").replace("-", "_");
-    format!("{}/{}", BUS_SOURCES_PREFIX, name)
+    dbus::create_source_device_path(&id)
 }
