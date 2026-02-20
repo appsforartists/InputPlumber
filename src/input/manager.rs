@@ -64,6 +64,20 @@ const VIRT_DEVICE_WHITELIST: &[&str] = &[
     "Sunshine X-Box One (virtual) pad",
     "Sunshine gamepad (virtual) motion sensors",
     "Sunshine Nintendo (virtual) pad",
+
+    // Created by kernel module drivers/hid/hid-wiimote-core.c to represent all
+    // the potential attachments for a Wiimote
+    "Nintendo Wii Remote",
+    "Nintendo Wii Remote Accelerometer",
+    "Nintendo Wii Remote IR",
+    "Nintendo Wii Remote Motion Plus",
+    "Nintendo Wii Remote Nunchuk",
+    "Nintendo Wii Remote Classic Controller",
+    "Nintendo Wii Remote Balance Board",
+    "Nintendo Wii Remote Pro Controller",
+    "Nintendo Wii Remote Drums",
+    "Nintendo Wii Remote Guitar",
+    "Nintendo Wii Remote Turntable",
 ];
 
 #[derive(Error, Debug)]
